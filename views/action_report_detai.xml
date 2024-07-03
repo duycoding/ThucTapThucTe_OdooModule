@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<odoo>-->
+<!--    &lt;!&ndash; Định nghĩa hành động báo cáo &ndash;&gt;-->
+<!--    <report-->
+<!--        id="action_report_research_project"-->
+<!--        model="research_project.detai"-->
+<!--        string="Báo Cáo Đề Tài"-->
+<!--        report_type="qweb-pdf"-->
+<!--        name="research_project.report_detai"-->
+<!--        file="research_project.report_detai"-->
+<!--        print_report_name="'Bao Cao De Tai - %s' % (object.name)"-->
+<!--    />-->
+<!--</odoo>-->
+
+
+<odoo>
+    <record id="action_report_research_project" model="ir.actions.report">
+        <field name="name">Report Research Projects</field>
+        <field name="type">ir.actions.report</field>
+        <field name="report_type">qweb-html</field>
+        <field name="model">research_project.detai</field>
+        <field name="report_name">research_management.report_detai</field>
+    </record>
+</odoo>

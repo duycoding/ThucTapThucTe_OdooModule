@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_detai">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Báo Cáo Đề Tài</h2>
+                        <p><strong>Tên Đề Tài:</strong> <t t-esc="o.name"/></p>
+                        <p><strong>Mã Số Đề Tài:</strong> <t t-esc="o.maso_detai"/></p>
+                        <p><strong>Chương Trình:</strong> <t t-esc="o.chuong_trinh"/></p>
+                        <p><strong>Mã Số Chương Trình:</strong> <t t-esc="o.maso_chuong_trinh"/></p>
+                        <p><strong>Lĩnh Vực Ưu Tiên:</strong> <t t-esc="dict(o._fields['linh_vuc_uu_tien'].selection).get(o.linh_vuc_uu_tien)"/></p>
+                        <p><strong>Lĩnh Vực Nghiên Cứu:</strong> <t t-esc="dict(o._fields['linh_vuc_nghien_cuu'].selection).get(o.linh_vuc_nghien_cuu)"/></p>
+                        <p><strong>Loại Hình Nghiên Cứu:</strong> <t t-esc="dict(o._fields['loai_hinh_nghien_cuu'].selection).get(o.loai_hinh_nghien_cuu)"/></p>
+                        <p><strong>Thời Gian Bắt Đầu:</strong> <t t-esc="o.thoi_gian_bat_dau.strftime('%d/%m/%Y') if o.thoi_gian_bat_dau else ''"/></p>
+                        <p><strong>Thời Gian Kết Thúc:</strong> <t t-esc="o.thoi_gian_ket_thuc.strftime('%d/%m/%Y') if o.thoi_gian_ket_thuc else ''"/></p>
+                        <p><strong>Đơn Vị Chủ Nhiệm:</strong> <t t-esc="o.don_vi_chu_nhiem"/></p>
+                        <p><strong>Điện Thoại Đơn Vị:</strong> <t t-esc="o.dien_thoai_don_vi"/></p>
+                        <p><strong>Email Đơn Vị:</strong> <t t-esc="o.email_don_vi"/></p>
+                        <p><strong>Địa Chỉ Đơn Vị:</strong> <t t-esc="o.dia_chi_don_vi"/></p>
+                        <p><strong>Thủ Trưởng Đơn Vị:</strong> <t t-esc="o.thu_truong_don_vi"/></p>
+                        <p><strong>Tính Cấp Thiết:</strong> <t t-esc="o.tinh_cap_thiet"/></p>
+                        <p><strong>Mục Tiêu Đề Tài:</strong> <t t-esc="o.muc_tieu_detai"/></p>
+                        <p><strong>Đối Tượng Nghiên Cứu:</strong> <t t-esc="o.doi_tuong_nghien_cuu"/></p>
+                        <p><strong>Phạm Vi Nghiên Cứu:</strong> <t t-esc="o.pham_vi_nghien_cuu"/></p>
+                        <p><strong>Cách Tiếp Cận:</strong> <t t-esc="o.cach_tiep_can"/></p>
+                        <p><strong>Phương Pháp Nghiên Cứu:</strong> <t t-esc="o.phuong_phap_nghien_cuu"/></p>
+                        <p><strong>Sản Phẩm:</strong> <t t-esc="o.san_pham"/></p>
+                        <p><strong>Phương Thức Chuyển Giao:</strong> <t t-esc="o.phuong_thuc_chuyen_giao"/></p>
+                        <p><strong>Địa Chỉ Ứng Dụng:</strong> <t t-esc="o.dia_chi_ung_dung"/></p>
+                        <p><strong>Tác Động và Lợi Ích:</strong> <t t-esc="o.tac_dong"/></p>
+                        <p><strong>Kinh Phí Thực Hiện:</strong> <t t-esc="o.kinh_phi_thuc_hien"/></p>
+                        <p><strong>Nguồn Kinh Phí:</strong> <t t-esc="o.nguon_kinh_phi"/></p>
+                        <p><strong>Chủ Nhiệm Đề Tài:</strong> <t t-esc="o.chu_nhiem_detai_id.name"/></p>
+                        <p><strong>Thành Viên:</strong></p>
+                        <ul>
+                            <t t-foreach="o.thanh_vien_ids" t-as="member">
+                                <li><t t-esc="member.name"/></li>
+                                <li><t t-esc="member.msvc"/></li>
+                                <li><t t-esc="member.chuc_danh"/></li>
+                                <li><t t-esc="member.don_vi_cong_tac"/></li>
+                            </t>
+                        </ul>
+                        <p><strong>Đơn Vị Phối Hợp:</strong></p>
+                        <ul>
+                            <t t-foreach="o.don_vi_phoi_hop_ids" t-as="unit">
+                                <li><t t-esc="unit.ten_don_vi"/></li>
+                            </t>
+                        </ul>
+<!--                        <p><strong>Tổng Quan Nghiên Cứu:</strong> <t t-esc="o.tong_quan_nghien_cuu_id.name"/></p>-->
+                        <p><strong>Tiến Độ Thực Hiện:</strong></p>
+                        <ul>
+                            <t t-foreach="o.tien_do_thuc_hien_ids" t-as="progress">
+                                <li><t t-esc="progress.noi_dung_cong_viec"/></li>
+                            </t>
+                        </ul>
+<!--                        <p><strong>Kinh Phí Thực Hiện:</strong> <t t-esc="o.kinh_phi_thuc_hien_id.name"/></p>-->
+<!--                        <p><strong>Hợp Đồng Triển Khai:</strong> <t t-esc="o.hop_dong_trien_khai_id.name"/></p>-->
+<!--                        <p><strong>Dự Toán Kinh Phí:</strong> <t t-esc="o.du_toan_kinh_phi_id.name"/></p>-->
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
